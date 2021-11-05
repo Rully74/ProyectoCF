@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/textures/1.png" type="Texture" id=1]
+[ext_resource path="res://Enviroment/Ground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://chatacters/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/flappyfont.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/textures/PNG/menu/play.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/PNG/menu/prize.png" type="Texture" id=6]
+[ext_resource path="res://MainMenu.gd" type="Script" id=7]
+[ext_resource path="res://SceneChanger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Score.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 2.50702, 3.56357 )
+scale = Vector2( 0.443149, 0.40726 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Ground" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 686.172 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 232.466, 356.253 )
+scale = Vector2( 1.5, 1.5 )
+script = null
+
+[node name="Label" type="Label" parent="."]
+margin_left = 58.6697
+margin_top = 195.0
+margin_right = 417.67
+margin_bottom = 267.0
+custom_fonts/font = SubResource( 1 )
+text = "FlappyHappy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreBtn" type="TextureButton" parent="Control"]
+margin_left = 293.6
+margin_top = 452.782
+margin_right = 593.6
+margin_bottom = 753.782
+rect_scale = Vector2( 0.33, 0.33 )
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtn" type="TextureButton" parent="Control"]
+margin_left = 81.7982
+margin_top = 452.398
+margin_right = 579.798
+margin_bottom = 952.398
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SceneChanger" parent="." instance=ExtResource( 8 )]
+
+[node name="Score" parent="." instance=ExtResource( 9 )]
+
+[connection signal="pressed" from="Control/PlayBtn" to="." method="_on_PlayBtn_pressed"]
+[connection signal="pressed" from="Control/PlayBtn" to="Control" method="_on_PlayBtn_pressed"]

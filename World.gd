@@ -63,3 +63,4 @@ func load_highscore():
 		save_data.open(SAVE_FILE_PATH, File.READ)
 		highscore = save_data.get_var()
 		save_data.close()
+

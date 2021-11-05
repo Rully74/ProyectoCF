@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PauseControl.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/PNG/pause/bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/PNG/pause/table.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/PNG/pause/header.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/PNG/btn/menu.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/PNG/btn/play.png" type="Texture" id=6]
+[ext_resource path="res://SceneChanger.tscn" type="PackedScene" id=7]
+
+[node name="Pause" type="CanvasLayer"]
+
+[node name="SceneChanger" parent="." instance=ExtResource( 7 )]
+pause_mode = 2
+
+[node name="PauseControl" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PauseControl"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.490196 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="PauseControl"]
+margin_left = 250.024
+margin_top = 396.093
+margin_right = 476.024
+margin_bottom = 617.093
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 5 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PauseControl"]
+margin_left = 107.573
+margin_top = 397.493
+margin_right = 337.573
+margin_bottom = 618.493
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 6 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="image" type="TextureRect" parent="PauseControl"]
+show_behind_parent = true
+margin_left = 31.7838
+margin_top = 292.412
+margin_right = 979.784
+margin_bottom = 1173.41
+rect_scale = Vector2( 0.45, 0.35 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PauseControl/image"]
+margin_left = 46.6167
+margin_top = 190.703
+margin_right = 870.617
+margin_bottom = 744.703
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PauseControl/image/TextureRect"]
+margin_left = -105.946
+margin_top = -263.353
+margin_right = 897.054
+margin_bottom = 132.647
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="PauseControl/MainMenu" to="PauseControl" method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="PauseControl/Resume" to="PauseControl" method="_on_Resume_pressed"]
